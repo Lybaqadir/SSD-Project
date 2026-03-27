@@ -1,6 +1,6 @@
 -- Hotel Management System Database
 -- DACS 3203 - Secure Software Development
--- Run this script once to set up the database
+
 
 CREATE DATABASE IF NOT EXISTS hotel_db;
 USE hotel_db;
