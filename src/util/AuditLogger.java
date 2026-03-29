@@ -1,23 +1,34 @@
-import java.sql.*;
+//Aljory did this
+package util;
 
-// A utility class that audits actions and save them to the database
-public class AuditLogger(){
-    public static void log (int userId, String action, String details){
-        //SQL Query + NOW() automated fill with the date and time at the moment itself
-        String sql = "INSERT INTO audit_logs (userId, action, details, timestamp) VALUES ('"+userId+"','"+action+"','"+details+"', NOW());";
+import java.sql.Connection;
+import java.sql.PreparedStatement;
 
-        //Try and catch so the system does not crash and display error message
+// A utility class that audits actions and saves them to the database
+public class AuditLogger {
 
-        try{
-            connection con = DBUtils.establishConnection();
-            Statement statement = con.createStatement();
+    // log() is called every time a sensitive action happens
+    // userId = who did it, action = what they did, details = extra info
+    public static void log(int userId, String action, String details) {
 
-            statement.executeUpdate(sql);
-            System.out.println("Audit log DB updated");
+        // ? marks are placeholders - PreparedStatement fills them safely
+        // this prevents SQL injection (T03 in our STRIDE model)
+        String sql = "INSERT INTO audit_logs (userId, action, details, timestamp) VALUES (?, ?, ?, NOW())";
 
-            DBUtils.closeConnection(con,statement);
-        } catch (Exception e){
-            System.out.println("Error: "+ e.getMessage())
+        // try-catch so the system does not crash if logging fails
+        try {
+            Connection con = DBConnection.getConnection();
+            PreparedStatement ps = con.prepareStatement(sql);
+
+            ps.setInt(1, userId);
+            ps.setString(2, action);
+            ps.setString(3, details);
+
+            ps.executeUpdate(); // runs the INSERT query
+            System.out.println("Audit log saved.");
+
+        } catch (Exception e) {
+            System.out.println("Error saving audit log: " + e.getMessage());
         }
     }
 }

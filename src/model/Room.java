@@ -1,3 +1,6 @@
+package model;
+
+//Aljory did this file
 public class Room {
     private int roomId;
     private String roomNumber;
@@ -30,6 +33,7 @@ public class Room {
     public String getCleaningStatus(){
         return cleaningStatus;
     }
+
 
     //Setters:
     public void setRoomId(int roomId){
