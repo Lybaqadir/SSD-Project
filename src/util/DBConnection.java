@@ -16,13 +16,14 @@ public class DBConnection {
 
             try {
                 Properties props = new Properties();
-                props.load(new FileInputStream("src/config.properties"));
+                props.load(new FileInputStream("src/config.properties")); /* this loads the file and props.load
+                 reads the content of file*/
 
                 String url      = props.getProperty("db.url");
                 String user     = props.getProperty("db.user");
                 String password = props.getProperty("db.password");
 
-                connection = DriverManager.getConnection(url, user, password);
+                connection = DriverManager.getConnection(url, user, password); //creates connection
                 System.out.println("Connected to database successfully.");
 
             } catch (Exception e) {
