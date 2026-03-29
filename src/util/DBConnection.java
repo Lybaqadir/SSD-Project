@@ -6,6 +6,7 @@ import java.sql.SQLException;
 import java.io.FileInputStream;
 import java.util.Properties;
 
+//lybaqadir did this file
 public class DBConnection {
 
     private static Connection connection = null;
