@@ -2,22 +2,13 @@
 
 package service;
 
-import dao.RoomDAO;          // handles all SQL for the rooms table
-import model.Room;           // the Room data container
-import util.AuditLogger;     // records every rate change in audit_logs
-import util.InputValidator;  // validates the new rate value before saving
-
-import java.util.List;       // List interface (like a resizable array)
+import dao.RoomDAO;
+import model.Room;
+import util.AuditLogger;
+import util.InputValidator;
+import java.util.List;
 
 /**
-
- * SECURITY:
- *   • updateRate() checks the current user is a Manager before doing anything
- *     → mitigates T10 (Privilege Escalation) and T05 (Rate Tampering)
- *   • All rate changes are logged with AuditLogger
- *     → mitigates T06 (Repudiation) — manager can't deny changing a rate
- *   • InputValidator.validateAmount() checks the new rate is a valid positive number
- *
  * COVERS USE CASES:
  *   Update Room Availability | Update Room Rates (N003)
  */
@@ -80,10 +71,8 @@ public class RoomService {
         return roomDAO.getRoomsByStatus(status);
     }
 
-    /**
-     * Returns every room in the database regardless of status.
-     * Used by RoomController to show the full room list to the manager.
-     */
+
+     //Returns every room in the database regardless of status.
     public List<Room> getAllRooms() {
         return roomDAO.getAllRooms();
     }

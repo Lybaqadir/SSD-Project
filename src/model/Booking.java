@@ -2,11 +2,6 @@
 
 package model;
 
-/**
- *   BookingDAO reads a row from the "bookings" table and fills this object.
- *   BookingService uses this object to apply business rules (validate, save).
- *   BookingController uses this object to display booking info on screen.
- */
 public class Booking {
 
     private int    bookingId;
