@@ -1,5 +1,5 @@
 package ui;
-
+//aljory
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import model.Booking;
@@ -7,19 +7,24 @@ import service.PaymentService;
 
 public class PaymentController{
 
-    @FMXL private Label lblTotalAmount;
-    @FMXL private ComboBox<String> cmbPaymentMethod;
-    @FMXL private Button btnConfirmPayment;
-    @FMXL private Label lblStatus;
+    @FXML private Label lblTotalAmount;
+    @FXML private ComboBox<String> cmbPaymentMethod;
+    @FXML private Button btnConfirmPayment;
+    @FXML private Label lblStatus;
 
     private PaymentService paymentService = new PaymentService();
     private int currentBookingId;
 
-    @FMXL
+    public void setBookingId(int bookingId) {
+        this.currentBookingId = bookingId;
+    }
+
+    @FXML
     public void initialize(){
         cmbPaymentMethod.getItems().addAll("Cash","Card","Online");
     }
 
+    @FXML
     public void handleConfirmPayment(){
         String method = cmbPaymentMethod.getValue();
 

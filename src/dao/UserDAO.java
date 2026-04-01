@@ -1,9 +1,11 @@
 package dao;
-
+//noora
 import model.User;
 import util.DBConnection;
 
 import java.sql.*;
+import java.util.ArrayList;
+import java.util.List;
 
 // Talks to the users table in the database
 // Uses PreparedStatements to prevent SQL injection
@@ -38,7 +40,7 @@ public class UserDAO {
     }
 
     // Saves a new user to the database
-    public boolean save(User user) {
+    public boolean saveUser(User user) {
         String sql = "INSERT INTO users (username, passwordHash, role, firstName, lastName) VALUES (?, ?, ?, ?, ?)";
 
         try {
@@ -60,7 +62,7 @@ public class UserDAO {
     }
 
     // Updates an existing user record
-    public boolean update(int userId, User user) {
+    public boolean updateUser(int userId, User user) {
         String sql = "UPDATE users SET username = ?, role = ?, firstName = ?, lastName = ? WHERE userId = ?";
 
         try {
@@ -82,7 +84,7 @@ public class UserDAO {
     }
 
     // Deletes a user from the database by their ID
-    public boolean delete(int userId) {
+    public boolean deleteUser(int userId) {
         String sql = "DELETE FROM users WHERE userId = ?";
 
         try {
@@ -97,5 +99,33 @@ public class UserDAO {
         }
 
         return false;
+    }
+
+    // Returns all users in the database
+    public List<User> getAllUsers() {
+        List<User> users = new ArrayList<>();
+        String sql = "SELECT * FROM users";
+
+        try {
+            Connection conn = DBConnection.getConnection();
+            PreparedStatement stmt = conn.prepareStatement(sql);
+            ResultSet rs = stmt.executeQuery();
+
+            while (rs.next()) {
+                User user = new User();
+                user.setUserId(rs.getInt("userId"));
+                user.setUsername(rs.getString("username"));
+                user.setPasswordHash(rs.getString("passwordHash"));
+                user.setRole(rs.getString("role"));
+                user.setFirstName(rs.getString("firstName"));
+                user.setLastName(rs.getString("lastName"));
+                users.add(user);
+            }
+
+        } catch (SQLException e) {
+            System.out.println("Error getting all users: " + e.getMessage());
+        }
+
+        return users;
     }
 }

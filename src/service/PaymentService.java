@@ -1,5 +1,5 @@
 package service;
-
+//Aljory
 import dao.BookingDAO;
 import dao.PaymentDAO;
 import dao.RoomDAO;
@@ -7,10 +7,11 @@ import model.Booking;
 import model.Payment;
 import model.Room;
 import util.AuditLogger;
-import util InputValidator;
+import util.InputValidator;
 
+import java.text.SimpleDateFormat;
 import java.util.Date;
-//Aljory
+
 public class PaymentService{
 
     private PaymentDAO paymentDAO = new PaymentDAO();
@@ -18,6 +19,7 @@ public class PaymentService{
     private RoomDAO roomDAO = new RoomDAO();
     private InputValidator inputValidator = new InputValidator();
     private AuditLogger auditLogger = new AuditLogger();
+    private SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
 
     //Payment Processing
     public boolean processPayment(int bookingId, double amount, String method){
@@ -34,7 +36,7 @@ public class PaymentService{
         payment.setBookingId(bookingId);
         payment.setAmount(amount);
         payment.setMethod(method);
-        payment.setTimestamp(new date());
+        payment.setTimestamp(new Date());
         payment.setStatus("PAID");
 
         boolean saved = paymentDAO.savePayment(payment);
@@ -51,8 +53,16 @@ public class PaymentService{
         if(booking == null) return 0;
 
         Room room = roomDAO.findById(booking.getRoomId());
-        long diff = booking.getCheckOutDate().getTime()-booking.getCheckInDate().getTime();
-        long nights = diff / (1000*60*60*24);
-        return room.getRate()*nights;
+
+        try {
+            Date checkIn  = sdf.parse(booking.getCheckInDate());
+            Date checkOut = sdf.parse(booking.getCheckOutDate());
+            long diff = checkOut.getTime() - checkIn.getTime();
+            long nights = diff / (1000*60*60*24);
+            return room.getRate() * nights;
+        } catch (Exception e) {
+            System.err.println("Date parsing error: " + e.getMessage());
+            return 0;
+        }
     }
 }

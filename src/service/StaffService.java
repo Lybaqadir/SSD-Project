@@ -47,7 +47,6 @@ public class StaffService {
             return false;
         }
 
-
         // PasswordHasher.hash() takes a plain text password and returns a BCrypt hash.
         String hashedPassword = PasswordHasher.hash(plainPassword);
 
@@ -100,7 +99,6 @@ public class StaffService {
 
         return updated;
     }
-
 
     /**
      * @param staffId   — the ID of the account to delete
