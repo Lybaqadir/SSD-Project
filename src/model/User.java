@@ -1,17 +1,20 @@
-//lybaqadir did this file
 package model;
+
+// Plain Java object that holds user data
+// Each field maps to one column in the users table
 public class User {
-    // Each field maps to one column in the "users" table.
 
     private int    userId;
     private String username;
-    private String passwordHash;  //User Authentication Protection implemented , database stores hashed passwords.
+    private String passwordHash; // User Authentication Protection - database stores hashed passwords
     private String role;
     private String firstName;
     private String lastName;
 
-    // CONSTRUCTOR
+    // Empty constructor
+    public User() {}
 
+    // Constructor with all fields
     public User(int userId, String username, String passwordHash,
                 String role, String firstName, String lastName) {
         this.userId       = userId;
@@ -22,7 +25,7 @@ public class User {
         this.lastName     = lastName;
     }
 
-    // GETTERS
+    // Getters
     public int    getUserId()       { return userId; }
     public String getUsername()     { return username; }
     public String getPasswordHash() { return passwordHash; }
@@ -30,7 +33,7 @@ public class User {
     public String getFirstName()    { return firstName; }
     public String getLastName()     { return lastName; }
 
-    // SETTERS
+    // Setters
     public void setUserId(int userId)             { this.userId = userId; }
     public void setUsername(String username)       { this.username = username; }
     public void setPasswordHash(String hash)       { this.passwordHash = hash; }
@@ -38,9 +41,7 @@ public class User {
     public void setFirstName(String firstName)     { this.firstName = firstName; }
     public void setLastName(String lastName)       { this.lastName = lastName; }
 
-
-
-    // We never print passwordHash in toString — it's sensitive data.
+    // We never print passwordHash in toString - it is sensitive data
     @Override
     public String toString() {
         return "User{" +

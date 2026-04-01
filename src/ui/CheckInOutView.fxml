@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
+
+<!-- Check-In and Check-Out screen -->
+<VBox xmlns:fx="http://javafx.com/fxml"
+      fx:controller="ui.CheckInOutController"
+      alignment="CENTER"
+      spacing="15"
+      prefWidth="400"
+      prefHeight="280">
+
+    <padding>
+        <Insets top="30" right="40" bottom="30" left="40"/>
+    </padding>
+
+    <Label text="Guest Check-In / Check-Out" style="-fx-font-size: 15px; -fx-font-weight: bold;"/>
+
+    <HBox spacing="10" alignment="CENTER_LEFT">
+        <Label text="Booking ID:" prefWidth="100"/>
+        <TextField fx:id="bookingIdField" promptText="Enter booking ID" prefWidth="200"/>
+    </HBox>
+
+    <HBox spacing="20" alignment="CENTER">
+        <Button text="Check-In" onAction="#handleCheckIn" prefWidth="130"/>
+        <Button text="Check-Out" onAction="#handleCheckOut" prefWidth="130"/>
+    </HBox>
+
+    <!-- Shows success or error messages -->
+    <Label fx:id="messageLabel"/>
+
+</VBox>
