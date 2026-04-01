@@ -1,5 +1,5 @@
 package ui;
-
+//aljory
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import model.User;
@@ -8,34 +8,35 @@ import service.StaffService;
 
 public class StaffController{
 
-    @FMXL private TextField txtUsername;
-    @FMXL private TextField txtFirstname;
-    @FMXL private TextField txtLastname;
-    @FMXL private PasswordField txtPassword;
-    @FMXL private ComboBox<String> cmbRole;
-    @FMXL private TextField txtUserId;
-    @FMXL private Label lblStatus;
+    @FXML private TextField txtUsername;
+    @FXML private TextField txtFirstname;
+    @FXML private TextField txtLastname;
+    @FXML private PasswordField txtPassword;
+    @FXML private ComboBox<String> cmbRole;
+    @FXML private TextField txtUserId;
+    @FXML private Label lblStatus;
 
     private StaffService staffService = new StaffService();
-    private AuthService authService = AuthService.getInstance();
 
-    @FMXL
-    public void initialize(){cmbRole.getItems().addAll("Receptionist","Cleaning Staff");
+    @FXML
+    public void initialize(){
+        cmbRole.getItems().addAll("Receptionist","Cleaning Staff");
     }
 
-    @FMXL
+    @FXML
     public void handleCreateStaff() {
         if (!isManager()) return;
 
+        String password = txtPassword.getText().trim();
         User user = buildUserFromForm();
-
         if (user == null) return;
 
-        boolean success = staffService.createStaffAccount(user);
+        int managerId = AuthService.getCurrentUser().getUserId();
+        boolean success = staffService.createStaffAccount(user, password, managerId);
         lblStatus.setText(success ? "Staff account created." : "Failed, username may be already existing.");
     }
 
-    @FMXL
+    @FXML
     private void handleUpdateStaff(){
         if(!isManager()) return;
 
@@ -46,14 +47,15 @@ public class StaffController{
         }
 
         int userId = Integer.parseInt(idText);
-        User updates=buildUserFromForm();
-        if(updates== null)return;
+        User updates = buildUserFromForm();
+        if(updates == null) return;
 
-        boolean success = staffService.updateStaffAccount(userId,updates);
+        int managerId = AuthService.getCurrentUser().getUserId();
+        boolean success = staffService.updateStaffAccount(userId, updates, managerId);
         lblStatus.setText(success ? "Staff account updated." : "Failed to update");
     }
 
-    @FMXL
+    @FXML
     private void handleDeleteStaff(){
         if(!isManager()) return;
 
@@ -64,18 +66,17 @@ public class StaffController{
         }
 
         int userId = Integer.parseInt(idText);
-        User updates=buildUserFromForm();
-
-        boolean success = staffService.deleteStaffAccount(userId);
+        int managerId = AuthService.getCurrentUser().getUserId();
+        boolean success = staffService.deleteStaffAccount(userId, managerId);
         lblStatus.setText(success ? "Staff account deleted." : "Failed to delete");
     }
 
     private User buildUserFromForm(){
-        String username = txt.Username.getText().trim();
-        String firstname = txt.Firstname.getText().trim();
-        String lastname = txt.Lastname.getText().trim();
-        String password = txt.Password.getText().trim();
-        String role = cmbRole.getValue();
+        String username  = txtUsername.getText().trim();
+        String firstname = txtFirstname.getText().trim();
+        String lastname  = txtLastname.getText().trim();
+        String password  = txtPassword.getText().trim();
+        String role      = cmbRole.getValue();
 
         if(username.isEmpty() || firstname.isEmpty() || password.isEmpty() || role == null){
             lblStatus.setText("Please fill in all fields");
@@ -84,15 +85,15 @@ public class StaffController{
 
         User user = new User();
         user.setUsername(username);
-        user.setFirstName(firstName);
-        user.setLastName(lastName);
+        user.setFirstName(firstname);
+        user.setLastName(lastname);
         user.setPasswordHash(password);
         user.setRole(role);
         return user;
     }
 
     private boolean isManager(){
-        if(!"Manager".equals(authService.getCurrentRole())){
+        if(!"Manager".equals(AuthService.getCurrentRole())){
             lblStatus.setText("Access denied. Only Manager is allowed");
             return false;
         }

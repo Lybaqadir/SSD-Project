@@ -42,6 +42,7 @@ public class PaymentDAO {
             return false;
             // Return false so the caller knows the save failed
         }
+        return false;
     }
 
     /**
