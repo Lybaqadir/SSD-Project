@@ -1,5 +1,4 @@
 //lybaQadir did this
-
 package service;
 
 import dao.RoomDAO;
@@ -62,17 +61,14 @@ public class RoomService {
     }
 
     /**
-
      * @param status — "available", "occupied", or "reserved"
      * @return List of Room objects matching that status (can be empty if none found)
      */
     public List<Room> getRoomsByStatus(String status) {
-
-        return roomDAO.getRoomsByStatus(status);
+        return roomDAO.findByStatus(status);
     }
 
-
-     //Returns every room in the database regardless of status.
+    //Returns every room in the database regardless of status.
     public List<Room> getAllRooms() {
         return roomDAO.getAllRooms();
     }
