@@ -1,30 +1,3 @@
-<<<<<<< HEAD
-<?xml version="1.0" encoding="UTF-8"?>
-<!--Aljory -->
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
-
-<VBox xmlns:fx="http://javafx.com/fxml"
-      fx:controller="ui.PaymentController"
-      spacing="20" alignment="CENTER"
-      style="-fx-padding: 40;">
-    <!--Title-->
-    <Label text="Payment" style="-fx-font-size: 22; -fx-font-weight: bold;"/>
-    <!--Gets the amount in paymentController by id-->
-    <Label fx:id="lblTotalAmount" text="Total Due: 0.00QAR" style="-fx-font-size: 16;"/>
-
-    <HBox spacing="10" alignment="CENTER">
-        <Label text="Payment Method:"/>
-        <ComboBox fx:id="cmbPaymentMethod" prefWidth="150"/>
-    </HBox>
-    <!--Calls the method in PaymentController-->
-    <Button fx:id="btnConfirmPayment" text="Confirm Payment"
-            onAction="#handleConfirmPayment"
-            prefWidth="180"/>
-    <!--Status message-->
-    <Label fx:id="lblStatus" text="" style="-fx-text-fill: red;"/>
-
-=======
 <?xml version="1.0" encoding="UTF-8"?>
 <!--Aljory -->
 <?import javafx.scene.control.*?>
@@ -50,5 +23,4 @@
 
     <Label fx:id="lblStatus" text="" style="-fx-text-fill: red;"/>
 
->>>>>>> 063854c4f423f9c65ad7f0ba21dacc2250b2b362
 </VBox>
