@@ -11,7 +11,7 @@ import java.util.Date;
 import java.util.List;
 //Aljory
 
-public class BookingService{
+public class BookingService {
 
     private BookingDAO bookingDAO = new BookingDAO();
     private RoomDAO roomDAO = new RoomDAO();
@@ -19,61 +19,66 @@ public class BookingService{
     private AuditLogger auditLogger = new AuditLogger();
     private SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
 
-    //To create booking
-    public boolean createBooking(Booking booking){
-        //To validate input before proceeding
+    // To create booking
+    public boolean createBooking(Booking booking) {
         if (!inputValidator.validateText(booking.getGuestName())) return false;
         if (!inputValidator.validateText(booking.getGuestPhone())) return false;
-        if (!inputValidator.validateText(booking.getCheckInDate())) return false;
-        if (!inputValidator.validateText(booking.getCheckOutDate())) return false;
+        if (!inputValidator.validateDate(booking.getCheckInDate())) return false;
+        if (!inputValidator.validateDate(booking.getCheckOutDate())) return false;
 
-        //To check availability before confirming the booking
         try {
             Date checkIn  = sdf.parse(booking.getCheckInDate());
             Date checkOut = sdf.parse(booking.getCheckOutDate());
-            if(!checkAvailability(checkIn, checkOut)) return false;
+            if (!checkAvailability(checkIn, checkOut)) return false;
         } catch (Exception e) {
             return false;
         }
 
         boolean saved = bookingDAO.saveBooking(booking);
-
-        if (saved){
-            auditLogger.log(booking.getRoomId(), "CREATE_BOOKING","Booking created for guest: "+booking.getGuestName());
+        if (saved) {
+            auditLogger.log(booking.getRoomId(), "CREATE_BOOKING",
+                    "Booking created for guest: " + booking.getGuestName());
         }
         return saved;
     }
 
-    //To modify bookings
-    public boolean modifyBooking(int bookingId, Booking updates){
-        //validation process
+    // To modify bookings — updates dates only, preserves existing status
+    public boolean modifyBooking(int bookingId, Booking updates) {
         if (!inputValidator.validateDate(updates.getCheckInDate())) return false;
         if (!inputValidator.validateDate(updates.getCheckOutDate())) return false;
 
-        //To check availability before modifying the booking
+        // Fetch existing booking so we can preserve its status
+        Booking existing = bookingDAO.findById(bookingId);
+        if (existing == null) {
+            System.err.println("[BookingService] Booking ID " + bookingId + " not found.");
+            return false;
+        }
+
+        // Keep the existing status, only update the dates
+        updates.setStatus(existing.getStatus());
+
         try {
             Date checkIn  = sdf.parse(updates.getCheckInDate());
             Date checkOut = sdf.parse(updates.getCheckOutDate());
-            if(!checkAvailability(checkIn, checkOut)) return false;
+            if (!checkAvailability(checkIn, checkOut)) return false;
         } catch (Exception e) {
             return false;
         }
 
         boolean updated = bookingDAO.updateBooking(bookingId, updates);
-
-        if(updated){
-            auditLogger.log(bookingId,"MODIFY_BOOKING","Booking ID "+bookingId+" modified.");
+        if (updated) {
+            auditLogger.log(bookingId, "MODIFY_BOOKING", "Booking ID " + bookingId + " dates modified.");
         }
         return updated;
     }
 
-    //search booking
-    public List<Booking> searchBooking(String criteria){
+    // Search booking
+    public List<Booking> searchBooking(String criteria) {
         return bookingDAO.findByCriteria(criteria);
     }
 
-    //To check availability
-    public boolean checkAvailability(Date checkIn, Date checkOut){
+    // To check availability
+    public boolean checkAvailability(Date checkIn, Date checkOut) {
         return roomDAO.hasAvailableRoom(checkIn, checkOut);
     }
 }

@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
+
+<VBox xmlns:fx="http://javafx.com/fxml"
+      fx:controller="ui.ReviewRecordsController"
+      spacing="0">
+
+    <!-- NAVIGATION BAR — Manager only -->
+    <HBox spacing="0" style="-fx-background-color: #2c3e50;">
+        <Button text="Staff Accounts" onAction="#goToStaff"
+                style="-fx-background-color: #2c3e50; -fx-text-fill: white; -fx-padding: 12 18 12 18;"/>
+        <Button text="Rooms" onAction="#goToRooms"
+                style="-fx-background-color: #2c3e50; -fx-text-fill: white; -fx-padding: 12 18 12 18;"/>
+        <Button text="Review Records" onAction="#goToReviewRecords"
+                style="-fx-background-color: #1a252f; -fx-text-fill: white; -fx-font-weight: bold; -fx-padding: 12 18 12 18;"/>
+        <Region HBox.hgrow="ALWAYS"/>
+        <Button text="Logout" onAction="#handleLogout"
+                style="-fx-background-color: #e74c3c; -fx-text-fill: white; -fx-font-weight: bold; -fx-padding: 12 18 12 18;"/>
+    </HBox>
+
+    <!-- CONTENT -->
+    <VBox spacing="16" style="-fx-padding: 28; -fx-background-color: #f0f4f8;">
+
+        <Label text="Review Booking and Payment Records"
+               style="-fx-font-size: 20px; -fx-font-weight: bold; -fx-text-fill: #2c3e50;"/>
+        <Label text="Manager view only — read only access"
+               style="-fx-font-size: 12px; -fx-text-fill: #888;"/>
+
+        <HBox alignment="CENTER_LEFT">
+            <Button text="🔄 Refresh" onAction="#handleRefresh"
+                    style="-fx-background-color: #2980b9; -fx-text-fill: white;
+                           -fx-font-weight: bold; -fx-padding: 8 16 8 16;"/>
+        </HBox>
+
+        <Label fx:id="statusLabel" style="-fx-font-size: 13px; -fx-font-weight: bold;"/>
+
+        <Separator/>
+
+        <!-- Bookings and Payments side by side -->
+        <HBox spacing="24">
+
+            <!-- Booking Records -->
+            <VBox spacing="8" HBox.hgrow="ALWAYS">
+                <Label text="📋 Booking Records"
+                       style="-fx-font-size: 16px; -fx-font-weight: bold; -fx-text-fill: #2c3e50;"/>
+                <ListView fx:id="bookingsList" prefHeight="350"
+                          style="-fx-font-size: 12px;"/>
+            </VBox>
+
+            <!-- Payment Records -->
+            <VBox spacing="8" HBox.hgrow="ALWAYS">
+                <Label text="💳 Payment Records"
+                       style="-fx-font-size: 16px; -fx-font-weight: bold; -fx-text-fill: #2c3e50;"/>
+                <ListView fx:id="paymentsList" prefHeight="350"
+                          style="-fx-font-size: 12px;"/>
+            </VBox>
+
+        </HBox>
+
+    </VBox>
+</VBox>

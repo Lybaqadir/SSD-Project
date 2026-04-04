@@ -5,7 +5,68 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="98a313bb-55af-4aed-ba57-21284ffe2f3a" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/src/ui/LoginController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ui/LoginController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/SSD-Project.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/SSD-Project.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sqldialects.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database.sql" beforeDir="false" afterPath="$PROJECT_DIR$/database.sql" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/libs/javafx-swt.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/libs/javafx.properties" beforeDir="false" afterPath="$PROJECT_DIR$/libs/javafx.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/SSD-Project/Main.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/SSD-Project/config.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/SSD-Project/dao/BookingDAO.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/SSD-Project/dao/PaymentDAO.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/SSD-Project/dao/RoomDAO.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/SSD-Project/dao/UserDAO.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/SSD-Project/model/Booking.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/SSD-Project/model/Payment.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/SSD-Project/model/Room.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/SSD-Project/model/User.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/SSD-Project/service/AuthService.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/SSD-Project/service/BookingService.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/SSD-Project/service/CheckInOutService.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/SSD-Project/service/CleaningService.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/SSD-Project/service/PaymentService.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/SSD-Project/service/RoomService.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/SSD-Project/service/StaffService.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/SSD-Project/src.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/SSD-Project/ui/BookingController.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/SSD-Project/ui/BookingView.fxml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/SSD-Project/ui/CheckInOutController.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/SSD-Project/ui/CheckInOutView.fxml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/SSD-Project/ui/CleaningController.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/SSD-Project/ui/CleaningView.fxml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/SSD-Project/ui/LoginController.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/SSD-Project/ui/LoginView.fxml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/SSD-Project/ui/PaymentController.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/SSD-Project/ui/PaymentView.fxml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/SSD-Project/ui/RoomController.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/SSD-Project/ui/RoomView.fxml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/SSD-Project/ui/StaffController.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/SSD-Project/ui/StaffView.fxml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/SSD-Project/util/AuditLogger.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/SSD-Project/util/DBConnection.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/SSD-Project/util/InputValidator.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/SSD-Project/util/PasswordHasher.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/dao/BookingDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/dao/BookingDAO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/dao/RoomDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/dao/RoomDAO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/service/AuthService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/service/AuthService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/service/BookingService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/service/BookingService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/service/RoomService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/service/RoomService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ui/BookingController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ui/BookingController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ui/BookingView.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/ui/BookingView.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ui/CheckInOutController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ui/CheckInOutController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ui/CheckInOutView.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/ui/CheckInOutView.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ui/CleaningController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ui/CleaningController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ui/CleaningView.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/ui/CleaningView.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ui/PaymentController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ui/PaymentController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ui/PaymentView.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/ui/PaymentView.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ui/RoomController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ui/RoomController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ui/RoomView.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/ui/RoomView.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ui/StaffController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ui/StaffController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ui/StaffView.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/ui/StaffView.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/util/InputValidator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/util/InputValidator.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -68,47 +129,73 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "Application.HotelManagementSystem.executor": "Run",
-    "ModuleVcsDetector.initialDetectionPerformed": "true",
-    "RunOnceActivity.MCP Project settings loaded": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "RunOnceActivity.git.unshallow": "true",
-    "com.intellij.ml.llm.matterhorn.ej.ui.settings.DefaultModelSelectionForGA.v1": "true",
-    "git-widget-placeholder": "main",
-    "ignore.virus.scanning.warn.message": "true",
-    "junie.onboarding.icon.badge.shown": "true",
-    "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "C:/Users/dacs3203/Desktop/SSD-Project",
-    "onboarding.tips.debug.path": "C:/Users/dacs3203/Desktop/SSD-Project/src/src/Main.java",
-    "project.structure.last.edited": "Modules",
-    "project.structure.proportion": "0.15",
-    "project.structure.side.proportion": "0.2",
-    "settings.editor.selected.configurable": "preferences.JavaFX",
-    "to.speed.mode.migration.done": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;Application.FixAllAccounts.executor&quot;: &quot;Run&quot;,
+    &quot;Application.HotelManagementSystem.executor&quot;: &quot;Run&quot;,
+    &quot;ModuleVcsDetector.initialDetectionPerformed&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.MCP Project settings loaded&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.go.formatter.settings.were.checked&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.typescript.service.memoryLimit.init&quot;: &quot;true&quot;,
+    &quot;com.intellij.ml.llm.matterhorn.ej.ui.settings.DefaultModelSelectionForGA.v1&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
+    &quot;junie.onboarding.icon.badge.shown&quot;: &quot;true&quot;,
+    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/dacs3203/Desktop/SSD-Project&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;onboarding.tips.debug.path&quot;: &quot;C:/Users/dacs3203/Desktop/SSD-Project/src/src/Main.java&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Project&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.JavaFX&quot;,
+    &quot;to.speed.mode.migration.done&quot;: &quot;true&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   },
-  "keyToStringList": {
-    "DatabaseDriversLRU": [
-      "mysql",
-      "mysql_aurora"
+  &quot;keyToStringList&quot;: {
+    &quot;DatabaseDriversLRU&quot;: [
+      &quot;mysql&quot;,
+      &quot;mysql_aurora&quot;
     ]
   }
-}]]></component>
-  <component name="RunManager">
-    <configuration name="HotelManagementSystem" type="Application" factoryName="Application">
-      <option name="MAIN_CLASS_NAME" value="Main" />
+}</component>
+  <component name="RunManager" selected="Application.HotelManagementSystem">
+    <configuration name="FixAllAccounts" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="FixAllAccounts" />
       <module name="SSD-Project" />
-      <option name="VM_PARAMETERS" value="-Dprism.order=sw -Dglass.platform=Monocle -Dmonocle.platform=Headless -Dembedded=monocle" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="HotelManagementSystem" type="Application" factoryName="Application">
+      <option name="MAIN_CLASS_NAME" value="Main" />
+      <module name="SSD-Project" />
+      <option name="VM_PARAMETERS" value="--module-path &quot;C:\Users\lybaq\Desktop\SSD-Project\libs&quot; --add-modules javafx.controls,javafx.fxml -Djava.library.path=&quot;C:\Users\lybaq\Desktop\SSD-Project\libs&quot;" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <list>
+      <item itemvalue="Application.HotelManagementSystem" />
+      <item itemvalue="Application.FixAllAccounts" />
+    </list>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Application.FixAllAccounts" />
+      </list>
+    </recent_temporary>
   </component>
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
         <option value="bundled-jdk-30f59d01ecdd-2fc7cc6b9a17-intellij.indexing.shared.core-IU-253.32098.37" />
+        <option value="bundled-js-predefined-d6986cc7102b-9b0f141eb926-JavaScript-IU-253.32098.37" />
       </set>
     </attachedChunks>
   </component>
@@ -119,8 +206,13 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1774641531289</updated>
+      <workItem from="1775312716103" duration="12280000" />
+      <workItem from="1775330658190" duration="346000" />
     </task>
     <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

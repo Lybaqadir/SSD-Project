@@ -53,15 +53,26 @@ public class BookingDAO {
         return null;
     }
 
-    // Updates an existing booking status
+    // Updates an existing booking — status AND dates if provided
     public boolean updateBooking(int bookingId, Booking booking) {
-        String sql = "UPDATE bookings SET status = ? WHERE bookingId = ?";
+        String sql;
+        if (booking.getCheckInDate() != null && booking.getCheckOutDate() != null) {
+            sql = "UPDATE bookings SET status = ?, checkInDate = ?, checkOutDate = ? WHERE bookingId = ?";
+        } else {
+            sql = "UPDATE bookings SET status = ? WHERE bookingId = ?";
+        }
 
         try {
             Connection conn = DBConnection.getConnection();
             PreparedStatement stmt = conn.prepareStatement(sql);
             stmt.setString(1, booking.getStatus());
-            stmt.setInt(2, bookingId);
+            if (booking.getCheckInDate() != null && booking.getCheckOutDate() != null) {
+                stmt.setString(2, booking.getCheckInDate());
+                stmt.setString(3, booking.getCheckOutDate());
+                stmt.setInt(4, bookingId);
+            } else {
+                stmt.setInt(2, bookingId);
+            }
             return stmt.executeUpdate() > 0;
 
         } catch (SQLException e) {

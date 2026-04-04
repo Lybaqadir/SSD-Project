@@ -14,7 +14,8 @@ public class InputValidator {
             return false;
         }
         // Block SQL injection characters
-        String dangerous = "';--";
+        // Note: dash (-) removed because dates use it (yyyy-MM-dd)
+        String dangerous = "';";
         for (char c : dangerous.toCharArray()) {
             if (input.indexOf(c) >= 0) {
                 return false;

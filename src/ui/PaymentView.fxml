@@ -5,22 +5,39 @@
 
 <VBox xmlns:fx="http://javafx.com/fxml"
       fx:controller="ui.PaymentController"
-      spacing="20" alignment="CENTER"
-      style="-fx-padding: 40;">
+      spacing="0">
 
-    <Label text="Payment" style="-fx-font-size: 22; -fx-font-weight: bold;"/>
-
-    <Label fx:id="lblTotalAmount" text="Total Due: 0.00QAR" style="-fx-font-size: 16;"/>
-
-    <HBox spacing="10" alignment="CENTER">
-        <Label text="Payment Method:"/>
-        <ComboBox fx:id="cmbPaymentMethod" prefWidth="150"/>
+    <!-- NAVIGATION BAR -->
+    <HBox spacing="0" style="-fx-background-color: #2c3e50;">
+        <Button text="Bookings" onAction="#goToBooking"
+                style="-fx-background-color: #2c3e50; -fx-text-fill: white; -fx-padding: 12 18 12 18;"/>
+        <Button text="Check-In/Out" onAction="#goToCheckInOut"
+                style="-fx-background-color: #2c3e50; -fx-text-fill: white; -fx-padding: 12 18 12 18;"/>
+        <Button text="Payment" onAction="#goToPayment"
+                style="-fx-background-color: #1a252f; -fx-text-fill: white; -fx-font-weight: bold; -fx-padding: 12 18 12 18;"/>
+        <Button text="Rooms" onAction="#goToRooms"
+                style="-fx-background-color: #2c3e50; -fx-text-fill: white; -fx-padding: 12 18 12 18;"/>
+        <Region HBox.hgrow="ALWAYS"/>
+        <Button text="Logout" onAction="#handleLogout"
+                style="-fx-background-color: #e74c3c; -fx-text-fill: white; -fx-font-weight: bold; -fx-padding: 12 18 12 18;"/>
     </HBox>
 
-    <Button fx:id="btnConfirmPayment" text="Confirm Payment"
-            onAction="#handleConfirmPayment"
-            prefWidth="180"/>
+    <!-- CONTENT -->
+    <VBox spacing="20" alignment="CENTER" style="-fx-padding: 40;">
+        <Label text="Payment" style="-fx-font-size: 22; -fx-font-weight: bold;"/>
 
-    <Label fx:id="lblStatus" text="" style="-fx-text-fill: red;"/>
+        <Label fx:id="lblTotalAmount" text="Total Due: 0.00QAR" style="-fx-font-size: 16;"/>
+
+        <HBox spacing="10" alignment="CENTER">
+            <Label text="Payment Method:"/>
+            <ComboBox fx:id="cmbPaymentMethod" prefWidth="150"/>
+        </HBox>
+
+        <Button fx:id="btnConfirmPayment" text="Confirm Payment"
+                onAction="#handleConfirmPayment"
+                prefWidth="180"/>
+
+        <Label fx:id="lblStatus" text="" style="-fx-text-fill: red;"/>
+    </VBox>
 
 </VBox>

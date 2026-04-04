@@ -1,116 +1,74 @@
 <?xml version="1.0" encoding="UTF-8"?>
-
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.geometry.Insets?>
 
-<!--
-    This is a Cleaning Status Update screen. Only Cleaning Staff can use it.
-    It lets a cleaning staff member update the cleaning status of a room
-    after they finish (or start) cleaning it.
--->
+<VBox xmlns:fx="http://javafx.com/fxml"
+      fx:controller="ui.CleaningController"
+      spacing="0">
 
-<!-- VBox = vertical container  -->
-<VBox
-        xmlns:fx="http://javafx.com/fxml"
-        fx:controller="ui.CleaningController"
-        spacing="16"
-        style="-fx-padding: 30; -fx-background-color: #f0f4f8;">
-
-    <!--PAGE TITLE-->
-    <Label
-            text="Room Cleaning Status"
-            style="-fx-font-size: 22px; -fx-font-weight: bold; -fx-text-fill: #2c3e50;"/>
-
-    <Label
-            text="Cleaning Staff Only — All updates are logged"
-            style="-fx-font-size: 12px; -fx-text-fill: #e67e22; -fx-font-weight: bold;"/>
-
-    <Separator/>
-
-    <!-- INPUT FORM -->
-    <!--
-      GridPane = grid layout with rows and columns.
-      GridPane.rowIndex = which row the element goes in (starts from 0).
-      GridPane.columnIndex = which column (0 = left, 1 = right).
-    -->
-    <GridPane hgap="20" vgap="14">
-        <padding><Insets top="5" bottom="5"/></padding>
-
-        <Label text="Room ID:"
-               GridPane.rowIndex="0" GridPane.columnIndex="0"
-               style="-fx-font-size: 14px; -fx-font-weight: bold;"
-               prefWidth="160"/>
-
-        <TextField
-                fx:id="roomIdField"
-                promptText="Enter room ID (e.g. 3)"
-                prefWidth="220"
-                GridPane.rowIndex="0" GridPane.columnIndex="1"/>
-
-
-        <Label text="New Cleaning Status:"
-               GridPane.rowIndex="1" GridPane.columnIndex="0"
-               style="-fx-font-size: 14px; -fx-font-weight: bold;"/>
-
-        <ComboBox
-                fx:id="cleaningStatusCombo"
-                prefWidth="220"
-                GridPane.rowIndex="1" GridPane.columnIndex="1"/>
-    </GridPane>
-
-    <!--  BUTTONS  -->
-    <HBox spacing="14" alignment="CENTER_LEFT">
-
-        <!--
-          Main action button — submits the update.
-          onAction="#handleUpdateStatus" → calls handleUpdateStatus() in CleaningController.
-          Green = positive/confirm action.
-        -->
-        <Button
-                text="Update Status"
-                onAction="#handleUpdateStatus"
-                prefWidth="150"
-                style="-fx-background-color: #27ae60; -fx-text-fill: white;
-                   -fx-font-size: 14px; -fx-font-weight: bold;
-                   -fx-padding: 8 14 8 14;"/>
-
-        <!--
-          Clear button — resets the form fields.
-          Grey = neutral/cancel action.
-        -->
-        <Button
-                text="Clear"
-                onAction="#handleClear"
-                prefWidth="90"
-                style="-fx-background-color: #95a5a6; -fx-text-fill: white;
-                   -fx-font-size: 13px; -fx-padding: 8 14 8 14;"/>
+    <!-- NAVIGATION BAR -->
+    <HBox spacing="0" style="-fx-background-color: #2c3e50;">
+        <Button text="🧹 Cleaning Status" onAction="#goToCleaning"
+                style="-fx-background-color: #1a252f; -fx-text-fill: white; -fx-font-weight: bold; -fx-padding: 12 18 12 18;"/>
+        <Region HBox.hgrow="ALWAYS"/>
+        <Button text="Logout" onAction="#handleLogout"
+                style="-fx-background-color: #e74c3c; -fx-text-fill: white; -fx-font-weight: bold; -fx-padding: 12 18 12 18;"/>
     </HBox>
 
-    <!--  STATUS MESSAGE  -->
-    <!--
-      This Label is updated by CleaningController:
-      ✓ green text = success
-      ✗ red text   = error or access denied
-      Starts empty — text="" means nothing shown initially.
-    -->
-    <Label
-            fx:id="statusLabel"
-            text=" "
-            style="-fx-font-size: 13px; -fx-font-weight: bold;"/>
+    <!-- CONTENT -->
+    <HBox spacing="30" style="-fx-padding: 30; -fx-background-color: #f0f4f8;">
 
-    <Separator/>
+        <!-- LEFT: Update cleaning status -->
+        <VBox spacing="16" prefWidth="380">
+            <Label text="Update Room Cleaning Status"
+                   style="-fx-font-size: 18px; -fx-font-weight: bold; -fx-text-fill: #2c3e50;"/>
+            <Label text="Cleaning Staff Only — All updates are logged"
+                   style="-fx-font-size: 12px; -fx-text-fill: #e67e22; -fx-font-weight: bold;"/>
+            <Separator/>
 
-    <!--  QUICK REFERENCE  -->
-    <!-- A simple reminder of what each status value means -->
-    <Label text="Status values:"
-           style="-fx-font-size: 13px; -fx-font-weight: bold; -fx-text-fill: #555;"/>
+            <GridPane hgap="20" vgap="14">
+                <padding><Insets top="5" bottom="5"/></padding>
+                <Label text="Room ID:" GridPane.rowIndex="0" GridPane.columnIndex="0"
+                       style="-fx-font-size: 14px; -fx-font-weight: bold;" prefWidth="160"/>
+                <TextField fx:id="roomIdField" promptText="Enter room ID (e.g. 3)" prefWidth="180"
+                           GridPane.rowIndex="0" GridPane.columnIndex="1"/>
+                <Label text="New Cleaning Status:" GridPane.rowIndex="1" GridPane.columnIndex="0"
+                       style="-fx-font-size: 14px; -fx-font-weight: bold;"/>
+                <ComboBox fx:id="cleaningStatusCombo" prefWidth="180"
+                          GridPane.rowIndex="1" GridPane.columnIndex="1"/>
+            </GridPane>
 
-    <Label text="clean — room is fully cleaned and ready for a new guest"
-           style="-fx-font-size: 12px; -fx-text-fill: #27ae60;"/>
-    <Label text="dirty — room needs cleaning (e.g. after checkout)"
-           style="-fx-font-size: 12px; -fx-text-fill: #e74c3c;"/>
-    <Label text="in_progress — cleaning is currently happening"
-           style="-fx-font-size: 12px; -fx-text-fill: #e67e22;"/>
+            <HBox spacing="14" alignment="CENTER_LEFT">
+                <Button text="Update Status" onAction="#handleUpdateStatus" prefWidth="150"
+                        style="-fx-background-color: #27ae60; -fx-text-fill: white;
+                               -fx-font-size: 14px; -fx-font-weight: bold; -fx-padding: 8 14 8 14;"/>
+                <Button text="Clear" onAction="#handleClear" prefWidth="90"
+                        style="-fx-background-color: #95a5a6; -fx-text-fill: white; -fx-padding: 8 14 8 14;"/>
+            </HBox>
 
+            <Label fx:id="statusLabel" text=" " style="-fx-font-size: 13px; -fx-font-weight: bold;"/>
+            <Separator/>
+
+            <Label text="Status values:" style="-fx-font-size: 13px; -fx-font-weight: bold; -fx-text-fill: #555;"/>
+            <Label text="clean — room is fully cleaned and ready for a new guest"
+                   style="-fx-font-size: 12px; -fx-text-fill: #27ae60;"/>
+            <Label text="in_progress — cleaning is currently happening"
+                   style="-fx-font-size: 12px; -fx-text-fill: #e67e22;"/>
+            <Label text="Note: Only the Receptionist can mark a room as dirty."
+                   style="-fx-font-size: 12px; -fx-text-fill: #e74c3c; -fx-font-weight: bold;"/>
+        </VBox>
+
+        <!-- RIGHT: Dirty rooms list -->
+        <VBox spacing="12" prefWidth="300">
+            <Label text="🔴 Rooms Needing Cleaning"
+                   style="-fx-font-size: 18px; -fx-font-weight: bold; -fx-text-fill: #c0392b;"/>
+            <Label text="Marked dirty by Receptionist"
+                   style="-fx-font-size: 12px; -fx-text-fill: #888;"/>
+            <Separator/>
+            <ListView fx:id="dirtyRoomsList" prefHeight="300"
+                      style="-fx-font-size: 13px;"/>
+        </VBox>
+
+    </HBox>
 </VBox>

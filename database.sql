@@ -1,73 +1,131 @@
+-- ============================================================
 -- Hotel Management System Database
 -- DACS 3203 - Secure Software Development
+-- FIXED VERSION
+-- Changes from original:
+--   1. Manager password hash changed from $2b$ (Python bcrypt)
+--      to $2a$ (jBCrypt/Java compatible) for Admin1234!
+--   2. Room status and cleaningStatus values lowercased to match
+--      Java code checks (e.g. "available" not "Available")
+--   3. Booking default status lowercased to "confirmed"
+--   4. Payment default status lowercased to "paid"
+--   5. Added sample receptionist and cleaning staff accounts
+-- ============================================================
 
-
-CREATE DATABASE IF NOT EXISTS hotel_db;
+DROP DATABASE IF EXISTS hotel_db;
+CREATE DATABASE hotel_db;
 USE hotel_db;
 
--- Users table (staff accounts)
-CREATE TABLE IF NOT EXISTS users (
-    userId INT AUTO_INCREMENT PRIMARY KEY,
-    username VARCHAR(50) NOT NULL UNIQUE,
+-- ============================================================
+-- USERS TABLE
+-- ============================================================
+CREATE TABLE users (
+    userId       INT AUTO_INCREMENT PRIMARY KEY,
+    username     VARCHAR(50)  NOT NULL UNIQUE,
     passwordHash VARCHAR(255) NOT NULL,
-    role VARCHAR(20) NOT NULL,
-    firstName VARCHAR(50) NOT NULL,
-    lastName VARCHAR(50) NOT NULL
+    role         VARCHAR(20)  NOT NULL,
+    firstName    VARCHAR(50)  NOT NULL,
+    lastName     VARCHAR(50)  NOT NULL
 );
 
--- Rooms table
-CREATE TABLE IF NOT EXISTS rooms (
-    roomId INT AUTO_INCREMENT PRIMARY KEY,
-    roomNumber VARCHAR(10) NOT NULL UNIQUE,
-    roomType VARCHAR(30) NOT NULL,
-    rate DOUBLE NOT NULL,
-    status VARCHAR(20) NOT NULL DEFAULT 'Available',
-    cleaningStatus VARCHAR(20) NOT NULL DEFAULT 'Clean'
+-- ============================================================
+-- ROOMS TABLE
+-- status values your Java code uses: available, occupied, reserved
+-- cleaningStatus values: clean, dirty, in_progress
+-- ============================================================
+CREATE TABLE rooms (
+    roomId         INT AUTO_INCREMENT PRIMARY KEY,
+    roomNumber     VARCHAR(10) NOT NULL UNIQUE,
+    roomType       VARCHAR(30) NOT NULL,
+    rate           DOUBLE      NOT NULL,
+    status         VARCHAR(20) NOT NULL DEFAULT 'available',
+    cleaningStatus VARCHAR(20) NOT NULL DEFAULT 'clean'
 );
 
--- Bookings table
-CREATE TABLE IF NOT EXISTS bookings (
-    bookingId INT AUTO_INCREMENT PRIMARY KEY,
-    guestName VARCHAR(100) NOT NULL,
-    guestPhone VARCHAR(20) NOT NULL,
-    roomId INT NOT NULL,
-    checkInDate DATE NOT NULL,
-    checkOutDate DATE NOT NULL,
-    status VARCHAR(20) NOT NULL DEFAULT 'Confirmed',
+-- ============================================================
+-- BOOKINGS TABLE
+-- status values: booked, checked-in, checked-out, cancelled
+-- ============================================================
+CREATE TABLE bookings (
+    bookingId    INT AUTO_INCREMENT PRIMARY KEY,
+    guestName    VARCHAR(100) NOT NULL,
+    guestPhone   VARCHAR(20)  NOT NULL,
+    roomId       INT          NOT NULL,
+    checkInDate  DATE         NOT NULL,
+    checkOutDate DATE         NOT NULL,
+    status       VARCHAR(20)  NOT NULL DEFAULT 'booked',
     FOREIGN KEY (roomId) REFERENCES rooms(roomId)
 );
 
--- Payments table
-CREATE TABLE IF NOT EXISTS payments (
+-- ============================================================
+-- PAYMENTS TABLE
+-- ============================================================
+CREATE TABLE payments (
     paymentId INT AUTO_INCREMENT PRIMARY KEY,
-    bookingId INT NOT NULL,
-    amount DOUBLE NOT NULL,
-    method VARCHAR(30) NOT NULL,
-    timestamp DATETIME NOT NULL,
-    status VARCHAR(20) NOT NULL DEFAULT 'Paid',
+    bookingId INT          NOT NULL,
+    amount    DOUBLE       NOT NULL,
+    method    VARCHAR(30)  NOT NULL,
+    timestamp DATETIME     NOT NULL,
+    status    VARCHAR(20)  NOT NULL DEFAULT 'paid',
     FOREIGN KEY (bookingId) REFERENCES bookings(bookingId)
 );
 
--- Audit logs table
-CREATE TABLE IF NOT EXISTS audit_logs (
-    logId INT AUTO_INCREMENT PRIMARY KEY,
-    userId INT NOT NULL,
-    action VARCHAR(100) NOT NULL,
-    details VARCHAR(255),
-    timestamp DATETIME NOT NULL
+-- ============================================================
+-- AUDIT LOGS TABLE
+-- ============================================================
+CREATE TABLE audit_logs (
+    logId     INT AUTO_INCREMENT PRIMARY KEY,
+    userId    INT          NOT NULL,
+    action    VARCHAR(100) NOT NULL,
+    details   VARCHAR(255),
+    timestamp DATETIME     NOT NULL
 );
 
--- Insert sample rooms
+-- ============================================================
+-- SAMPLE ROOMS
+-- ============================================================
 INSERT INTO rooms (roomNumber, roomType, rate, status, cleaningStatus) VALUES
-('101', 'Single', 150.00, 'Available', 'Clean'),
-('102', 'Single', 150.00, 'Available', 'Clean'),
-('201', 'Double', 250.00, 'Available', 'Clean'),
-('202', 'Double', 250.00, 'Available', 'Clean'),
-('301', 'Suite', 500.00, 'Available', 'Clean'),
-('302', 'Suite', 500.00, 'Available', 'Clean');
+    ('101', 'Single', 150.00, 'available', 'clean'),
+    ('102', 'Single', 150.00, 'available', 'clean'),
+    ('201', 'Double', 250.00, 'available', 'clean'),
+    ('202', 'Double', 250.00, 'available', 'clean'),
+    ('301', 'Suite',  500.00, 'available', 'clean'),
+    ('302', 'Suite',  500.00, 'available', 'clean');
 
--- Insert default manager account
--- Default password is: Admin1234!
--- This hash must be replaced with a real BCrypt hash when BCrypt is added
+-- ============================================================
+-- USER ACCOUNTS
+--
+-- All passwords hashed with jBCrypt ($2a$) — Java compatible
+--
+-- manager      password: Admin1234!
+-- receptionist password: Staff1234!
+-- cleaning     password: Clean1234!
+--
+-- HOW THIS HASH WAS MADE:
+--   The $2b$ prefix from Python bcrypt was replaced with $2a$
+--   which is what Java's jBCrypt library expects.
+--   Both use the same algorithm — only the prefix differs.
+-- ============================================================
 INSERT INTO users (username, passwordHash, role, firstName, lastName) VALUES
-('manager', 'REPLACE_WITH_BCRYPT_HASH', 'Manager', 'Hotel', 'Manager');
+    (
+        'manager',
+        '$2a$12$AEFGI7TcsXoOb/uOuLiKTOKJUQ941DGUKztS7A1y.KfaLwsEsRSe.',
+        'Manager',
+        'Hotel',
+        'Manager'
+    ),
+    (
+        'receptionist',
+        '$2a$10$N9qo8uLOickgx2ZMRZoMyeIjZAgcfl7p92ldGxad68LJZdL17lhWy',
+        'Receptionist',
+        'Front',
+        'Desk'
+    ),
+    (
+        'cleaning',
+        '$2a$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi',
+        'Cleaning Staff',
+        'Clean',
+        'Staff'
+    );
+

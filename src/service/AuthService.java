@@ -21,8 +21,14 @@ public class AuthService {
 
         if (user == null) {
             // User not found in database
+            System.out.println("User not found: " + username);
             return false;
         }
+
+        // DEBUG lines - remove after testing
+        System.out.println("User found: " + user.getUsername());
+        System.out.println("Stored hash: " + user.getPasswordHash());
+        System.out.println("Password match: " + PasswordHasher.verify(password, user.getPasswordHash()));
 
         // Check the entered password against the stored hash using BCrypt
         boolean passwordMatches = PasswordHasher.verify(password, user.getPasswordHash());
