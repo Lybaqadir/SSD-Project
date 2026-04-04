@@ -71,7 +71,7 @@ public class RoomController {
         refreshTable(null);
     }
 
-    // ── Navigation ──────────────────────────────────────────
+    //Navigation
     @FXML private void goToStaff()         { NavigationHelper.navigateTo(rateRoomIdField, "/ui/StaffView.fxml"); }
     @FXML private void goToReviewRecords() { NavigationHelper.navigateTo(rateRoomIdField, "/ui/ReviewRecordsView.fxml"); }
     @FXML private void goToRooms()         { /* already here */ }
@@ -85,7 +85,7 @@ public class RoomController {
         NavigationHelper.navigateTo(rateRoomIdField, "/ui/LoginView.fxml");
     }
 
-    // ── Actions ─────────────────────────────────────────────
+    //Actions
     @FXML
     private void handleApplyFilter() {
         String selected = statusFilterCombo.getValue();

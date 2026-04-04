@@ -5,7 +5,7 @@ import dao.RoomDAO;
 import util.AuditLogger;
 import util.InputValidator;
 
-//COVERS USE CASE: Update Room Cleaning Status
+//USE CASE: Update Room Cleaning Status
 
 public class CleaningService {
 

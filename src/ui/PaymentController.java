@@ -36,7 +36,7 @@ public class PaymentController {
         NavigationHelper.navigateTo(lblTotalAmount, "/ui/LoginView.fxml");
     }
 
-    // ── Actions ─────────────────────────────────────────────
+    // Actions
     @FXML
     public void handleConfirmPayment() {
         String method = cmbPaymentMethod.getValue();

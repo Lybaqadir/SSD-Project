@@ -1,5 +1,5 @@
 package ui;
-//nora did this
+//nora and lyba did this
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import service.AuthService;
@@ -102,7 +102,7 @@ public class CheckInOutController {
         }
     }
 
-    // ── Helpers ──────────────────────────────────────────────
+    // Helpers
     private void hideButton(Button btn) {
         btn.setVisible(false);
         btn.setManaged(false);

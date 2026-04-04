@@ -9,7 +9,7 @@ import java.util.List;
 
 /**
  * COVERS USE CASES:
- *   Update Room Availability | Update Room Rates (N003) | Mark Room Dirty
+ *   Update Room Availability,Update Room Rates (N003),Mark Room Dirty
  */
 public class RoomService {
 

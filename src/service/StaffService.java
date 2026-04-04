@@ -1,4 +1,4 @@
-//lybaqadir did this
+//lybaqadir
 package service;
 
 import dao.UserDAO;
@@ -14,9 +14,8 @@ public class StaffService {
     private UserDAO userDAO = new UserDAO();
 
     /**
-     * @param newUser       — a User object with the new staff's details.
-     * @param plainPassword — the plain text password typed by the manager
-     *                        (we hash this before saving — NEVER store plain passwords).
+     * @param newUser       — User object with the new staff's details.
+     * @param plainPassword — password typed by the manager
      * @param managerId     — the Manager's user ID (for audit log)
      * @return true if account was created successfully
      **/

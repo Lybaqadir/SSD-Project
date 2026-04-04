@@ -1,24 +1,16 @@
--- ============================================================
+
+-- lyba did this
+
+
 -- Hotel Management System Database
--- DACS 3203 - Secure Software Development
--- FIXED VERSION
--- Changes from original:
---   1. Manager password hash changed from $2b$ (Python bcrypt)
---      to $2a$ (jBCrypt/Java compatible) for Admin1234!
---   2. Room status and cleaningStatus values lowercased to match
---      Java code checks (e.g. "available" not "Available")
---   3. Booking default status lowercased to "confirmed"
---   4. Payment default status lowercased to "paid"
---   5. Added sample receptionist and cleaning staff accounts
--- ============================================================
 
 DROP DATABASE IF EXISTS hotel_db;
 CREATE DATABASE hotel_db;
 USE hotel_db;
 
--- ============================================================
+
 -- USERS TABLE
--- ============================================================
+
 CREATE TABLE users (
     userId       INT AUTO_INCREMENT PRIMARY KEY,
     username     VARCHAR(50)  NOT NULL UNIQUE,
@@ -28,11 +20,11 @@ CREATE TABLE users (
     lastName     VARCHAR(50)  NOT NULL
 );
 
--- ============================================================
+
 -- ROOMS TABLE
 -- status values your Java code uses: available, occupied, reserved
 -- cleaningStatus values: clean, dirty, in_progress
--- ============================================================
+
 CREATE TABLE rooms (
     roomId         INT AUTO_INCREMENT PRIMARY KEY,
     roomNumber     VARCHAR(10) NOT NULL UNIQUE,
@@ -42,10 +34,10 @@ CREATE TABLE rooms (
     cleaningStatus VARCHAR(20) NOT NULL DEFAULT 'clean'
 );
 
--- ============================================================
+
 -- BOOKINGS TABLE
 -- status values: booked, checked-in, checked-out, cancelled
--- ============================================================
+
 CREATE TABLE bookings (
     bookingId    INT AUTO_INCREMENT PRIMARY KEY,
     guestName    VARCHAR(100) NOT NULL,
@@ -57,9 +49,9 @@ CREATE TABLE bookings (
     FOREIGN KEY (roomId) REFERENCES rooms(roomId)
 );
 
--- ============================================================
+
 -- PAYMENTS TABLE
--- ============================================================
+
 CREATE TABLE payments (
     paymentId INT AUTO_INCREMENT PRIMARY KEY,
     bookingId INT          NOT NULL,
@@ -70,9 +62,9 @@ CREATE TABLE payments (
     FOREIGN KEY (bookingId) REFERENCES bookings(bookingId)
 );
 
--- ============================================================
+
 -- AUDIT LOGS TABLE
--- ============================================================
+
 CREATE TABLE audit_logs (
     logId     INT AUTO_INCREMENT PRIMARY KEY,
     userId    INT          NOT NULL,
@@ -81,9 +73,9 @@ CREATE TABLE audit_logs (
     timestamp DATETIME     NOT NULL
 );
 
--- ============================================================
+
 -- SAMPLE ROOMS
--- ============================================================
+
 INSERT INTO rooms (roomNumber, roomType, rate, status, cleaningStatus) VALUES
     ('101', 'Single', 150.00, 'available', 'clean'),
     ('102', 'Single', 150.00, 'available', 'clean'),
@@ -92,7 +84,7 @@ INSERT INTO rooms (roomNumber, roomType, rate, status, cleaningStatus) VALUES
     ('301', 'Suite',  500.00, 'available', 'clean'),
     ('302', 'Suite',  500.00, 'available', 'clean');
 
--- ============================================================
+
 -- USER ACCOUNTS
 --
 -- All passwords hashed with jBCrypt ($2a$) — Java compatible
@@ -105,7 +97,7 @@ INSERT INTO rooms (roomNumber, roomType, rate, status, cleaningStatus) VALUES
 --   The $2b$ prefix from Python bcrypt was replaced with $2a$
 --   which is what Java's jBCrypt library expects.
 --   Both use the same algorithm — only the prefix differs.
--- ============================================================
+
 INSERT INTO users (username, passwordHash, role, firstName, lastName) VALUES
     (
         'manager',

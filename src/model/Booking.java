@@ -1,8 +1,7 @@
 package model;
 //lyba
 
-// Plain Java object that holds booking data
-// Uses String for dates to match the bookings table format (yyyy-MM-dd)
+
 public class Booking {
 
     private int    bookingId;

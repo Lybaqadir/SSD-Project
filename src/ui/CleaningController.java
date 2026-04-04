@@ -77,7 +77,7 @@ public class CleaningController {
         statusLabel.setText("");
     }
 
-    // ── Helpers ──────────────────────────────────────────────
+    //Helpers
 
     // Loads all rooms with cleaningStatus = "dirty" into the list
     // so the cleaner knows which rooms need attention

@@ -1,4 +1,4 @@
-//lybaqadir did this
+//lybaqadir
 package dao;
 
 import model.Payment;
@@ -59,7 +59,7 @@ public class PaymentDAO {
 
             stmt.setInt(1, bookingId);
 
-            // executeQuery() is used for SELECT statements
+
             // It returns a ResultSet — like a mini-table of results
             ResultSet rs = stmt.executeQuery();
 

@@ -1,5 +1,6 @@
 package ui;
 // N009 — Review Booking and Payment Records (Manager only)
+//lyba
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import model.Booking;
@@ -29,7 +30,7 @@ public class ReviewRecordsController {
         loadPayments();
     }
 
-    // ── Navigation ──────────────────────────────────────────
+    // Navigation
     @FXML private void goToStaff()         { NavigationHelper.navigateTo(bookingsList, "/ui/StaffView.fxml"); }
     @FXML private void goToRooms()         { NavigationHelper.navigateTo(bookingsList, "/ui/RoomView.fxml"); }
     @FXML private void goToReviewRecords() { /* already here */ }
@@ -40,7 +41,7 @@ public class ReviewRecordsController {
         NavigationHelper.navigateTo(bookingsList, "/ui/LoginView.fxml");
     }
 
-    // ── Actions ─────────────────────────────────────────────
+    // Actions
     @FXML
     private void handleRefresh() {
         loadBookings();

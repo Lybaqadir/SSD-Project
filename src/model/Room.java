@@ -1,6 +1,6 @@
 package model;
 
-//Aljory did this file
+//Aljory
 public class Room {
     private int roomId;
     private String roomNumber;

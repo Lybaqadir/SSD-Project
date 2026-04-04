@@ -1,5 +1,5 @@
 package ui;
-//nora did this
+//nora and lyba did this
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import model.Booking;
@@ -45,7 +45,7 @@ public class BookingController {
         }
     }
 
-    // ── Navigation ──────────────────────────────────────────
+    // Navigation
     @FXML private void goToBooking()    { /* already here */ }
     @FXML private void goToCheckInOut() { NavigationHelper.navigateTo(guestNameField, "/ui/CheckInOutView.fxml"); }
     @FXML private void goToPayment()    { NavigationHelper.navigateTo(guestNameField, "/ui/PaymentView.fxml"); }
@@ -58,7 +58,7 @@ public class BookingController {
         NavigationHelper.navigateTo(guestNameField, "/ui/LoginView.fxml");
     }
 
-    // ── Actions ─────────────────────────────────────────────
+    // Actions
     @FXML
     private void handleCreate() {
         String guestName  = guestNameField.getText();
@@ -165,7 +165,7 @@ public class BookingController {
         }
     }
 
-    // ── Helpers ──────────────────────────────────────────────
+    // Helpers
     private void hideButton(Button btn) {
         btn.setVisible(false);
         btn.setManaged(false);

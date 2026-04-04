@@ -1,5 +1,5 @@
 package ui;
-//aljory
+//aljory and lyba did this
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import model.User;
@@ -23,7 +23,7 @@ public class StaffController {
         cmbRole.getItems().addAll("Receptionist", "Cleaning Staff");
     }
 
-    // ── Navigation — Manager only ────────────────────────────
+    // Navigation — Manager only
     @FXML private void goToStaff()         { /* already here */ }
     @FXML private void goToRooms()         { NavigationHelper.navigateTo(txtUsername, "/ui/RoomView.fxml"); }
     @FXML private void goToReviewRecords() { NavigationHelper.navigateTo(txtUsername, "/ui/ReviewRecordsView.fxml"); }
@@ -77,7 +77,7 @@ public class StaffController {
         lblStatus.setText(success ? "✓  Staff account deleted." : "✗  Failed to delete.");
     }
 
-    // ── Helpers ──────────────────────────────────────────────
+    //Helpers
     private User buildUserFromForm() {
         String username  = txtUsername.getText().trim();
         String firstname = txtFirstname.getText().trim();

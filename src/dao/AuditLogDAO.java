@@ -1,4 +1,5 @@
 package dao;
+//lyba
 
 import util.DBConnection;
 import java.sql.*;
@@ -10,11 +11,6 @@ public class AuditLogDAO {
 
     /**
      * Returns the actual timestamp of when a guest checked in.
-     *
-     * When CheckInOutService calls AuditLogger.log(bookingId, "CHECK_IN", ...),
-     * the bookingId is stored in the userId column of audit_logs.
-     * So we search: action = 'CHECK_IN' AND userId = bookingId
-     *
      * @param bookingId — the booking we want the real check-in time for
      * @return timestamp string e.g. "2025-03-15 14:32:00", or null if not checked in yet
      */
