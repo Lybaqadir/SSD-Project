@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--Aljory-->
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+
+<VBox xmlns:fx="http://javafx.com/fxml"
+      fx:controller="ui.StaffController"
+      spacing="15" alignment="CENTER"
+      style="-fx-padding: 40;">
+
+    <Label text="Manage Staff Accounts"
+           style="-fx-font-size: 22; -fx-font-weight: bold;"/>
+
+    <HBox spacing="10" alignment="CENTER">
+        <Label text="User ID (for update/delete):" prefWidth="200"/>
+        <TextField fx:id="txtUserId" prefWidth="180" promptText="Leave blank to create"/>
+    </HBox>
+
+    <!--Fields to add-->
+    <HBox spacing="10" alignment="CENTER">
+        <Label text="Username:" prefWidth="200"/>
+        <TextField fx:id="txtUsername" prefWidth="180"/>
+    </HBox>
+    <HBox spacing="10" alignment="CENTER">
+        <Label text="First Name:" prefWidth="200"/>
+        <TextField fx:id="txtFirstname" prefWidth="180"/>
+    </HBox>
+    <HBox spacing="10" alignment="CENTER">
+        <Label text="Last Name:" prefWidth="200"/>
+        <TextField fx:id="txtLastname" prefWidth="180"/>
+    </HBox>
+    <HBox spacing="10" alignment="CENTER">
+        <Label text="Password:" prefWidth="200"/>
+        <PasswordField fx:id="txtPassword" prefWidth="180"/>
+    </HBox>
+    <HBox spacing="10" alignment="CENTER">
+        <Label text="Role:" prefWidth="200"/>
+        <ComboBox fx:id="cmbRole" prefWidth="180"/>
+    </HBox>
+
+    <!--Buttons to choose needed action-->
+    <HBox spacing="15" alignment="CENTER">
+        <Button text="Create" onAction="#handleCreateStaff" prefWidth="120"/>
+        <Button text="Update" onAction="#handleUpdateStaff" prefWidth="120"/>
+        <Button text="Delete" onAction="#handleDeleteStaff" prefWidth="120"
+                style="-fx-text-fill: red;"/>
+    </HBox>
+
+    <!--Status message after the action-->
+    <Label fx:id="lblStatus" text="" style="-fx-text-fill: blue;"/>
+
+</VBox>

@@ -1,0 +1,83 @@
+Index: src/model/Room.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package model;\r\n\r\n//Aljory did this file\r\npublic class Room {\r\n    private int roomId;\r\n    private String roomNumber;\r\n    private String roomType;\r\n    private double rate;\r\n    private String status;\r\n    private String cleaningStatus;\r\n\r\n    //Getters:\r\n    public int getRoomId(){\r\n        return roomId;\r\n    }\r\n\r\n    public String getRoomNumber(){\r\n        return roomNumber;\r\n    }\r\n\r\n    public String getRoomType(){\r\n        return roomType;\r\n    }\r\n\r\n    public double getRate(){\r\n        return rate;\r\n    }\r\n\r\n    public String getStatus(){\r\n        return status;\r\n    }\r\n\r\n    public String getCleaningStatus(){\r\n        return cleaningStatus;\r\n    }\r\n\r\n\r\n    //Setters:\r\n    public void setRoomId(int roomId){\r\n        this.roomId=roomId;\r\n    }\r\n\r\n    public void setRoomNumber(String roomNumber){\r\n        this.roomNumber=roomNumber;\r\n    }\r\n\r\n    public void setRoomType(String roomType){\r\n        this.roomType=roomType;\r\n    }\r\n\r\n    public void setRate(double rate){\r\n        this.rate=rate;\r\n    }\r\n\r\n    public void setStatus(String status){\r\n        this.status=status;\r\n    }\r\n\r\n    public void setCleaningStatus(String cleaningStatus){\r\n        this.cleaningStatus=cleaningStatus;\r\n    }\r\n}
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/model/Room.java b/src/model/Room.java
+--- a/src/model/Room.java	(revision 4aa7dc9e1031b08e64220bbc6391871ff34d22d6)
++++ b/src/model/Room.java	(date 1774805650581)
+@@ -2,6 +2,7 @@
+ 
+ //Aljory did this file
+ public class Room {
++    //Aljory
+     private int roomId;
+     private String roomNumber;
+     private String roomType;
+Index: src/util/AuditLogger.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>//Aljory did this\r\npackage util;\r\n\r\nimport java.sql.Connection;\r\nimport java.sql.PreparedStatement;\r\n\r\n// A utility class that audits actions and saves them to the database\r\npublic class AuditLogger {\r\n\r\n    // log() is called every time a sensitive action happens\r\n    // userId = who did it, action = what they did, details = extra info\r\n    public static void log(int userId, String action, String details) {\r\n\r\n        // ? marks are placeholders - PreparedStatement fills them safely\r\n        // this prevents SQL injection (T03 in our STRIDE model)\r\n        String sql = \"INSERT INTO audit_logs (userId, action, details, timestamp) VALUES (?, ?, ?, NOW())\";\r\n\r\n        // try-catch so the system does not crash if logging fails\r\n        try {\r\n            Connection con = DBConnection.getConnection();\r\n            PreparedStatement ps = con.prepareStatement(sql);\r\n\r\n            ps.setInt(1, userId);\r\n            ps.setString(2, action);\r\n            ps.setString(3, details);\r\n\r\n            ps.executeUpdate(); // runs the INSERT query\r\n            System.out.println(\"Audit log saved.\");\r\n\r\n        } catch (Exception e) {\r\n            System.out.println(\"Error saving audit log: \" + e.getMessage());\r\n        }\r\n    }\r\n}
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/util/AuditLogger.java b/src/util/AuditLogger.java
+--- a/src/util/AuditLogger.java	(revision 4aa7dc9e1031b08e64220bbc6391871ff34d22d6)
++++ b/src/util/AuditLogger.java	(date 1774805993258)
+@@ -1,34 +1,26 @@
+-//Aljory did this
+-package util;
+-
+-import java.sql.Connection;
+-import java.sql.PreparedStatement;
+-
+-// A utility class that audits actions and saves them to the database
+-public class AuditLogger {
+-
+-    // log() is called every time a sensitive action happens
+-    // userId = who did it, action = what they did, details = extra info
+-    public static void log(int userId, String action, String details) {
+-
+-        // ? marks are placeholders - PreparedStatement fills them safely
+-        // this prevents SQL injection (T03 in our STRIDE model)
+-        String sql = "INSERT INTO audit_logs (userId, action, details, timestamp) VALUES (?, ?, ?, NOW())";
++import java.sql.*;
++//Aljory
++// A utility class that audits actions and save them to the database
++public class AuditLogger(){
++    public static void log (int userId, String action, String details){
++        //SQL Query + NOW() automated fill with the date and time at the moment itself
++        String sql = "INSERT INTO audit_logs (userId, action, details, timestamp) VALUES (?,?,?, NOW())";
+ 
+-        // try-catch so the system does not crash if logging fails
+-        try {
+-            Connection con = DBConnection.getConnection();
++        //Try and catch so the system does not crash and display error message
++
++        try{
++            connection con = DBUtils.establishConnection();
+             PreparedStatement ps = con.prepareStatement(sql);
+ 
+-            ps.setInt(1, userId);
+-            ps.setString(2, action);
+-            ps.setString(3, details);
++            ps.setInt(1,userId);
++            ps.setString(2,action);
++            ps.setsetString(3,details);
++            ps.executeUpdate();
++            System.out.println("Audit log DB updated");
+ 
+-            ps.executeUpdate(); // runs the INSERT query
+-            System.out.println("Audit log saved.");
+-
+-        } catch (Exception e) {
+-            System.out.println("Error saving audit log: " + e.getMessage());
++            DBUtils.closeConnection(con,statement);
++        } catch (Exception e){
++            System.out.println("Error: "+ e.getMessage())
+         }
+     }
+ }
+\ No newline at end of file
