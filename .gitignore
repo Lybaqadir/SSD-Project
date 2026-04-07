@@ -3,5 +3,3 @@
 out/
 *.class
 *.DS_Store
-libs/
-config.properties
