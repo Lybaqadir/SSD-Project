@@ -4,15 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="98a313bb-55af-4aed-ba57-21284ffe2f3a" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ui/ReviewRecordsController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ui/ReviewRecordsController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ui/StaffController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ui/StaffController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ui/StaffView.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/ui/StaffView.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/util/InputValidator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/util/InputValidator.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/util/PasswordHasher.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/util/PasswordHasher.java" afterDir="false" />
-    </list>
+    <list default="true" id="98a313bb-55af-4aed-ba57-21284ffe2f3a" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -158,6 +150,7 @@
       <workItem from="1775553210052" duration="5045000" />
       <workItem from="1775563679085" duration="137000" />
       <workItem from="1775565738669" duration="77000" />
+      <workItem from="1775570558890" duration="109000" />
     </task>
     <servers />
   </component>
