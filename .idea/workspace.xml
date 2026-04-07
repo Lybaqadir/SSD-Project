@@ -6,26 +6,12 @@
   <component name="ChangeListManager">
     <list default="true" id="98a313bb-55af-4aed-ba57-21284ffe2f3a" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database.sql" beforeDir="false" afterPath="$PROJECT_DIR$/database.sql" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/dao/AuditLogDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/dao/AuditLogDAO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/dao/PaymentDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/dao/PaymentDAO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/model/Booking.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/Booking.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/model/Room.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/Room.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/model/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/User.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/service/AuthService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/service/AuthService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/service/CleaningService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/service/CleaningService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/service/RoomService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/service/RoomService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/service/StaffService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/service/StaffService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ui/BookingController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ui/BookingController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ui/CheckInOutController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ui/CheckInOutController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ui/CleaningController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ui/CleaningController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ui/NavigationHelper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ui/NavigationHelper.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ui/PaymentController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ui/PaymentController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/ui/ReviewRecordsController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ui/ReviewRecordsController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ui/RoomController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ui/RoomController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/ui/StaffController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ui/StaffController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/util/AuditLogger.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/util/AuditLogger.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ui/StaffView.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/ui/StaffView.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/util/InputValidator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/util/InputValidator.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/util/PasswordHasher.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/util/PasswordHasher.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -168,6 +154,10 @@
       <workItem from="1775312716103" duration="12280000" />
       <workItem from="1775330658190" duration="346000" />
       <workItem from="1775333533681" duration="1855000" />
+      <workItem from="1775491702823" duration="13885000" />
+      <workItem from="1775553210052" duration="5045000" />
+      <workItem from="1775563679085" duration="137000" />
+      <workItem from="1775565738669" duration="77000" />
     </task>
     <servers />
   </component>

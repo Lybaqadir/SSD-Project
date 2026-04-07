@@ -23,7 +23,7 @@ public class StaffController {
         cmbRole.getItems().addAll("Receptionist", "Cleaning Staff");
     }
 
-    // Navigation — Manager only
+    // Navigation between Screens — Manager only
     @FXML private void goToStaff()         { /* already here */ }
     @FXML private void goToRooms()         { NavigationHelper.navigateTo(txtUsername, "/ui/RoomView.fxml"); }
     @FXML private void goToReviewRecords() { NavigationHelper.navigateTo(txtUsername, "/ui/ReviewRecordsView.fxml"); }
@@ -34,7 +34,7 @@ public class StaffController {
         NavigationHelper.navigateTo(txtUsername, "/ui/LoginView.fxml");
     }
 
-    // ── Actions ─────────────────────────────────────────────
+    // Actions
     @FXML
     public void handleCreateStaff() {
         if (!isManager()) return;

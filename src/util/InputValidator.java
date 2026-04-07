@@ -26,7 +26,8 @@ public class InputValidator {
 
     // Removes any extra whitespace from input
     public static String sanitize(String input) {
-        if (input == null) return "";
+        if (input == null)
+            return "";
         return input.trim();
     }
 

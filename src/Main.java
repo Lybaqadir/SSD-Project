@@ -17,7 +17,7 @@ public class Main extends Application {
 
         primaryStage.setTitle("Hotel Management System");
         primaryStage.setScene(scene);
-        primaryStage.setResizable(false);
+        primaryStage.setResizable(true);
         primaryStage.show();
     }
 

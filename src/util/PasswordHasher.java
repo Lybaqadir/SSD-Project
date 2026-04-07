@@ -7,12 +7,14 @@ import org.mindrot.jbcrypt.BCrypt;
 public class PasswordHasher {
 
     // Hashes a plain text password before saving it to the database
-    public static String hash(String password) {
+    public static String hash(String password)
+    {
         return BCrypt.hashpw(password, BCrypt.gensalt());
     }
 
     // Checks if a plain text password matches the stored hash
-    public static boolean verify(String password, String hash) {
+    public static boolean verify(String password, String hash)
+    {
         return BCrypt.checkpw(password, hash);
     }
 }

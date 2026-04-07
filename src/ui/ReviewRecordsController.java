@@ -31,9 +31,12 @@ public class ReviewRecordsController {
     }
 
     // Navigation
-    @FXML private void goToStaff()         { NavigationHelper.navigateTo(bookingsList, "/ui/StaffView.fxml"); }
-    @FXML private void goToRooms()         { NavigationHelper.navigateTo(bookingsList, "/ui/RoomView.fxml"); }
-    @FXML private void goToReviewRecords() { /* already here */ }
+    @FXML private void goToStaff()
+    { NavigationHelper.navigateTo(bookingsList, "/ui/StaffView.fxml"); }
+    @FXML private void goToRooms()
+    { NavigationHelper.navigateTo(bookingsList, "/ui/RoomView.fxml"); }
+    @FXML private void goToReviewRecords()
+    { /* already here */ }
 
     @FXML
     private void handleLogout() {
