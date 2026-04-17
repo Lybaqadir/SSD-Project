@@ -141,7 +141,9 @@ audit_logs  → logId, userId, action, details, timestamp
 ```
 
 **Room statuses:** `available` · `occupied` · `reserved`
+
 **Booking statuses:** `booked` · `checked-in` · `checked-out` · `cancelled`
+
 **Cleaning statuses:** `clean` · `dirty` · `in_progress`
 
 ---
@@ -170,10 +172,8 @@ SSD-Project/
 ├── libs/                   # JavaFX SDK, jBCrypt, MySQL JDBC JAR
 ├── database.sql            # Full schema + seed data
 └── .gitignore
-|__ Screenshots             #Folder containing the screenshots of app working 
-                             this folder is only for readme and can be deleted 
-                             too its not part of project !
 ```
+
 ---
 
 ## 🚀 Getting Started
@@ -227,13 +227,14 @@ mysql -u root -p < database.sql
 
 <div align="center">
 
-| | Name of Contributors |
-|:-:|------|--------------|
+| | Name | Role |
+|:-:|------|------|
 | 👩‍💻 | **Lyba Qadir** | Software Engineer |
 | 👩‍💻 | **Noora Al-Hajri** | Cyber Security |
 | 👩‍💻 | **Aljory Almannai** | Cyber Security |
 
 *Built for **Secure Software Development Course Project***
+
 *University of Doha for Science and Technology · 2026*
 
 </div>
