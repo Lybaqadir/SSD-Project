@@ -1,41 +1,38 @@
+<div align="center">
+
 # 🏨 Hotel Management System
 
-<p align="center">
-  <em>Secure • Full-Featured • Role-Based</em>
-</p>
+### *Secure • Full-Featured • Role-Based*
 
-<p align="center">
-  <a href="https://openjdk.org/">
-    <img src="https://img.shields.io/badge/Java-17-ED8B00?style=for-the-badge&logo=openjdk&logoColor=white"/>
-  </a>
-  <a href="https://openjfx.io/">
-    <img src="https://img.shields.io/badge/JavaFX-17-007396?style=for-the-badge&logo=java&logoColor=white"/>
-  </a>
-  <a href="https://www.mysql.com/">
-    <img src="https://img.shields.io/badge/MySQL-8.0-4479A1?style=for-the-badge&logo=mysql&logoColor=white"/>
-  </a>
-  <a href="https://en.wikipedia.org/wiki/Bcrypt">
-    <img src="https://img.shields.io/badge/BCrypt-Password%20Hashing-2ecc71?style=for-the-badge"/>
-  </a>
-  <img src="https://img.shields.io/badge/Architecture-MVC-blueviolet?style=for-the-badge"/>
-  <img src="https://img.shields.io/badge/Access%20Control-RBAC-critical?style=for-the-badge"/>
-</p>
+[![Java](https://img.shields.io/badge/Java-17-ED8B00?style=for-the-badge&logo=openjdk&logoColor=white)](https://openjdk.org/)
+[![JavaFX](https://img.shields.io/badge/JavaFX-17-007396?style=for-the-badge&logo=java&logoColor=white)](https://openjfx.io/)
+[![MySQL](https://img.shields.io/badge/MySQL-8.0-4479A1?style=for-the-badge&logo=mysql&logoColor=white)](https://www.mysql.com/)
+[![BCrypt](https://img.shields.io/badge/BCrypt-Password%20Hashing-2ecc71?style=for-the-badge)](https://en.wikipedia.org/wiki/Bcrypt)
+[![MVC](https://img.shields.io/badge/Architecture-MVC-blueviolet?style=for-the-badge)]()
+[![RBAC](https://img.shields.io/badge/Access%20Control-RBAC-critical?style=for-the-badge)]()
 
----
+<br/>
 
-> *A production-grade desktop application demonstrating end-to-end secure software development — from threat modeling with STRIDE/DREAD to a fully layered MVC implementation.*
+> *A production-grade desktop application demonstrating end-to-end secure software development —*
+> *from threat modeling with STRIDE/DREAD to a fully layered MVC implementation.*
+
+</div>
 
 ---
 
 ## 📸 Preview
 
+<div align="center">
+
 | 🔐 Login Screen | 👥 Staff Management |
 |:-:|:-:|
-| ![](Screenshots/image.png) | ![](Screenshots/image-1.png) |
+| *(image.png)* | *(image-1.png)* |
 
 | 📋 Booking View | 🛏️ Room Cleaning Status |
 |:-:|:-:|
-| ![](Screenshots/image-2.png) | ![](Screenshots/image-3.png) |
+| *(image-2.png)* | *(image-3.png)* |
+
+</div>
 
 ---
 
@@ -46,20 +43,20 @@
 <td width="50%">
 
 ### 🔐 Security First
-- BCrypt password hashing (cost factor 12)
-- PreparedStatements — SQL injection protection
-- RBAC enforced at the business layer
-- Audit logging for sensitive actions
+- **BCrypt** password hashing (cost factor 12)
+- **PreparedStatements** — SQL injection proof
+- **RBAC** enforced at the business layer
+- **Audit logging** for all sensitive actions
 - Generic error messages to prevent data leaks
 
 </td>
 <td width="50%">
 
 ### 🏗️ Clean Architecture
-- Full MVC — model, service, DAO, UI layers
-- Role-separated scenes
-- Business logic decoupled from persistence
-- JavaFX FXML-based navigation
+- Full **MVC** — model, service, DAO, UI layers
+- Role-separated scenes (Manager / Receptionist / Cleaning Staff)
+- Business logic fully decoupled from persistence
+- JavaFX FXML-based scene navigation
 
 </td>
 </tr>
@@ -69,17 +66,17 @@
 ### 📋 Booking & Operations
 - Create, update & search bookings
 - Real-time room availability tracking
-- Automatic room status updates
-- Payment simulation
+- Automatic room status on check-in/out
+- Payment simulation with cost calculation
 
 </td>
 <td>
 
 ### 👥 Staff & Access Control
 - Role-based login (3 roles)
-- Managers manage accounts
-- Cleaning staff receive assignments
-- Restricted UI per role
+- Managers can create/update/delete accounts
+- Cleaning staff get live room assignment feeds
+- Every role sees only its permitted screens
 
 </td>
 </tr>
@@ -90,7 +87,29 @@
 ## 🏛️ Architecture
 
 ```
-Presentation → Business → DAO → Database
+┌──────────────────────────────────────────────────┐
+│              Presentation Layer (ui/)             │
+│   JavaFX FXML Controllers per Role               │
+│   Manager  │  Receptionist  │  Cleaning Staff    │
+└────────────────────┬─────────────────────────────┘
+                     │
+┌────────────────────▼─────────────────────────────┐
+│              Business Layer (service/)            │
+│   BookingService │ RoomService │ AuthService      │
+│   Input Validation │ RBAC Enforcement             │
+└────────────────────┬─────────────────────────────┘
+                     │
+┌────────────────────▼─────────────────────────────┐
+│              Persistence Layer (dao/)             │
+│   BookingDAO │ RoomDAO │ UserDAO                  │
+│   PaymentDAO │ AuditLogDAO                        │
+│   JDBC + PreparedStatements                       │
+└────────────────────┬─────────────────────────────┘
+                     │
+┌────────────────────▼─────────────────────────────┐
+│                  MySQL 8.0                        │
+│   users │ rooms │ bookings │ payments │ audit_logs│
+└──────────────────────────────────────────────────┘
 ```
 
 ---
@@ -99,11 +118,33 @@ Presentation → Business → DAO → Database
 
 | Threat | Mitigation |
 |--------|------------|
-| Weak Passwords | BCrypt hashing |
-| SQL Injection | PreparedStatements |
-| Unauthorized Access | RBAC |
-| Data Leakage | Generic errors |
-| Accountability | Audit logging |
+| Weak Passwords | BCrypt hashing ($2a$, cost factor 12) |
+| SQL Injection | PreparedStatements throughout all DAOs |
+| Unauthorized Access | Role-based access control (RBAC) |
+| Privilege Escalation | Business-layer role enforcement |
+| Data Leakage | Generic error responses only |
+| Accountability | Audit log on all sensitive actions |
+
+> Threat modeling performed using **STRIDE** and **DREAD** frameworks.
+> Dynamic testing via **DAST** applied during validation phase.
+
+---
+
+## 🗄️ Database Schema
+
+```sql
+users       → userId, username, passwordHash, role, firstName, lastName
+rooms       → roomId, roomNumber, roomType, rate, status, cleaningStatus
+bookings    → bookingId, guestName, guestPhone, roomId, checkIn, checkOut, status
+payments    → paymentId, bookingId, amount, method, timestamp, status
+audit_logs  → logId, userId, action, details, timestamp
+```
+
+**Room statuses:** `available` · `occupied` · `reserved`
+
+**Booking statuses:** `booked` · `checked-in` · `checked-out` · `cancelled`
+
+**Cleaning statuses:** `clean` · `dirty` · `in_progress`
 
 ---
 
@@ -112,36 +153,112 @@ Presentation → Business → DAO → Database
 ```
 SSD-Project/
 ├── src/
-├── libs/
-├── database.sql
-├── Screenshots/
-└── Main.java
+│   ├── dao/
+│   │   ├── AuditLogDAO.java
+│   │   ├── BookingDAO.java
+│   │   ├── PaymentDAO.java
+│   │   ├── RoomDAO.java
+│   │   └── UserDAO.java
+│   ├── model/
+│   │   ├── Booking.java
+│   │   ├── Payment.java
+│   │   ├── Room.java
+│   │   └── User.java
+│   ├── service/            # Business logic & RBAC enforcement
+│   ├── ui/                 # JavaFX FXML controllers per role
+│   ├── util/               # DBConnection, BCryptUtil, AuditLogger
+│   ├── config.properties   # DB credentials (gitignored)
+│   └── Main.java           # Application entry point → loads LoginView.fxml
+├── libs/                   # JavaFX SDK, jBCrypt, MySQL JDBC JAR
+├── database.sql            # Full schema + seed data
+└── .gitignore
 ```
 
 ---
 
 ## 🚀 Getting Started
 
+### Prerequisites
+
 ```
-git clone https://github.com/Lybaqadir/SSD-Project.git
-cd SSD-Project
-mysql -u root -p < database.sql
+Java 17+
+JavaFX SDK 17+
+MySQL 8.0+
+IntelliJ IDEA (recommended)
 ```
 
-Run Main.java
+### Setup
+
+```bash
+# 1. Clone the repository
+git clone https://github.com/Lybaqadir/SSD-Project.git
+cd SSD-Project
+
+# 2. Set up the database
+mysql -u root -p < database.sql
+
+# 3. Configure DB credentials
+# Edit src/config.properties:
+#   db.url      = jdbc:mysql://localhost:3306/hotel_db
+#   db.username = your_username
+#   db.password = your_password
+
+# 4. Add libraries to classpath (see /libs folder)
+#    → JavaFX SDK
+#    → jBCrypt JAR
+#    → MySQL Connector/J
+
+# 5. Run Main.java
+```
+
+### Default Login Credentials
+
+| Role | Username | Password |
+|------|----------|----------|
+| Manager | `manager` | `Admin1234!` |
+| Receptionist | `receptionist` | `Staff1234!` |
+| Cleaning Staff | `cleaning` | `Clean1234!` |
+
+> ⚠️ Change all default passwords before any real deployment.
 
 ---
 
 ## 👥 Team
 
-| 👩‍💻 | Name | Role |
+<div align="center">
+
+| | Name | Role |
 |:-:|------|------|
-| 👩‍💻 | Lyba Qadir | Software Engineer |
-| 👩‍💻 | Noora Al-Hajri | Cyber Security |
-| 👩‍💻 | Aljory Almannai | Cyber Security |
+| 👩‍💻 | **Lyba Qadir** | Software Engineer |
+| 👩‍💻 | **Noora Al-Hajri** | Cyber Security |
+| 👩‍💻 | **Aljory Almannai** | Cyber Security |
+
+*Built for **Secure Software Development Course Project***
+
+*University of Doha for Science and Technology · 2026*
+
+</div>
 
 ---
 
-<p align="center">
-  Made with ☕ Java & 🔒 security
-</p>
+## 🛠️ Tech Stack
+
+```
+Language        →  Java 17
+UI Framework    →  JavaFX (FXML + Controllers)
+Database        →  MySQL 8.0
+ORM / Access    →  JDBC + PreparedStatements
+Security        →  jBCrypt, RBAC, Audit Logging
+IDE             →  IntelliJ IDEA
+Threat Modeling →  STRIDE / DREAD
+Testing         →  DAST (Dynamic Application Security Testing)
+Diagrams        →  UML Class & Sequence Diagrams
+```
+
+---
+
+<div align="center">
+
+*Made with ☕ Java and a lot of 🔒 security thinking*
+
+</div>
