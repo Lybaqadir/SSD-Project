@@ -26,11 +26,11 @@
 
 | 🔐 Login Screen | 👥 Staff Management |
 |:-:|:-:|
-| *(image.png)* | *(image-1.png)* |
+| ![](Screenshots/image.png) | ![](Screenshots/image-1.png) |
 
 | 📋 Booking View | 🛏️ Room Cleaning Status |
 |:-:|:-:|
-| *(image-2.png)* | *(image-3.png)* |
+| ![](Screenshots/image-2.png) | ![](Screenshots/image-3.png) |
 
 </div>
 
@@ -164,13 +164,13 @@ SSD-Project/
 │   │   ├── Payment.java
 │   │   ├── Room.java
 │   │   └── User.java
-│   ├── service/            # Business logic & RBAC enforcement
-│   ├── ui/                 # JavaFX FXML controllers per role
-│   ├── util/               # DBConnection, BCryptUtil, AuditLogger
-│   ├── config.properties   # DB credentials (gitignored)
-│   └── Main.java           # Application entry point → loads LoginView.fxml
-├── libs/                   # JavaFX SDK, jBCrypt, MySQL JDBC JAR
-├── database.sql            # Full schema + seed data
+│   ├── service/
+│   ├── ui/
+│   ├── util/
+│   ├── config.properties
+│   └── Main.java
+├── libs/
+├── database.sql
 └── .gitignore
 ```
 
@@ -190,36 +190,10 @@ IntelliJ IDEA (recommended)
 ### Setup
 
 ```bash
-# 1. Clone the repository
 git clone https://github.com/Lybaqadir/SSD-Project.git
 cd SSD-Project
-
-# 2. Set up the database
 mysql -u root -p < database.sql
-
-# 3. Configure DB credentials
-# Edit src/config.properties:
-#   db.url      = jdbc:mysql://localhost:3306/hotel_db
-#   db.username = your_username
-#   db.password = your_password
-
-# 4. Add libraries to classpath (see /libs folder)
-#    → JavaFX SDK
-#    → jBCrypt JAR
-#    → MySQL Connector/J
-
-# 5. Run Main.java
 ```
-
-### Default Login Credentials
-
-| Role | Username | Password |
-|------|----------|----------|
-| Manager | `manager` | `Admin1234!` |
-| Receptionist | `receptionist` | `Staff1234!` |
-| Cleaning Staff | `cleaning` | `Clean1234!` |
-
-> ⚠️ Change all default passwords before any real deployment.
 
 ---
 
@@ -251,8 +225,8 @@ ORM / Access    →  JDBC + PreparedStatements
 Security        →  jBCrypt, RBAC, Audit Logging
 IDE             →  IntelliJ IDEA
 Threat Modeling →  STRIDE / DREAD
-Testing         →  DAST (Dynamic Application Security Testing)
-Diagrams        →  UML Class & Sequence Diagrams
+Testing         →  DAST
+Diagrams        →  UML
 ```
 
 ---
